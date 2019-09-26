@@ -229,3 +229,177 @@
   229  history 
   230  ls
   231  history  > Day2_History.txt
+  232  git add . ; git commit -m "Day2 History file"; git push origin master  
+  233  cat docker/apache/Dockerfile 
+  234  docker images 
+  235  ls
+  236  cd docker/
+  237  ls
+  238  mkdir python-app
+  239  ls
+  240  cd python-app/
+  241  ls
+  242  vim Dockerfile
+  243  ls
+  244  vi app.py
+  245  ls
+  246  vi requirements.txt
+  247  ls
+  248  cat Dockerfile 
+  249  ls
+  250  cat Dockerfile 
+  251  docker build -t my-python:v1
+  252  docker build -t my-python:v1 .
+  253  ls
+  254  docker images 
+  255  ls
+  256  cd 
+  257  ls
+  258  cd devops-sg-25092019/
+  259  ls
+  260  docker ps 
+  261  curl 172.17.0.7/info.html
+  262  curl 172.17.0.8 
+  263  curl 172.17.0.8/info.html
+  264  ifconfig 
+  265  net ns 
+  266  ip netns 
+  267  ln -s /var/run/docker/netns /var/run/
+  268  ip netns 
+  269  docker kill $(docker ps -aq)
+  270  docker rm $(docker ps -aq)
+  271  ip netns 
+  272  ip addr 
+  273  docker images 
+  274  docker run -d myapache-file:v1
+  275  ip addr 
+  276  ip netns 
+  277  ip -n 70f0dde000ae link 
+  278  ip -n 70f0dde000ae addr 
+  279  docker run -d myapache-file:v1
+  280  ip netns 
+  281  ip -n 99b8e164988f  addr 
+  282* 
+  283  ip -n 99b8e164988f  addr 
+  284  curl 172.17.0.2
+  285  curl  localhost
+  286  docker run -d -P myapache-file:v1
+  287  docker ps 
+  288  docker run -d -p 8080:80  myapache-file:v1
+  289  docker ps 
+  290  iptables -L
+  291  docker ps 
+  292  curl localhost
+  293  curl localhost:8080
+  294  ip addr 
+  295  curl 10.128.0.5:8080
+  296  ls
+  297  cd docker/apache/
+  298  ls
+  299  vim Dockerfile 
+  300  docker images 
+  301  docker build -t myapache-file:v3 .
+  302  docker run -d -P  myapache-file:v3 
+  303  docker ps 
+  304  iptables -L
+  305  netstat -tulnp 
+  306  history 
+  307  '
+
+
+
+  308  docker network ls 
+  309  docker network inspect b8c2f61576f8        
+  310  docker run -d -P --name test01 myapache-file:v3 
+  311  docker ps 
+  312  docker network inspect b8c2f61576f8        
+  313  docker kill $(docker ps -aq)
+  314  docker network inspect b8c2f61576f8        
+  315  docker run -d -P --name test01 myapache-file:v3 
+  316  docker ps -a 
+  317  docker run -d -P --name test02 myapache-file:v3 
+  318  docker network inspect b8c2f61576f8        
+  319  docker network create --help
+  320  docker network create -d bridge --subnet=172.28.0.0/16 --ip-range=172.28.5.0/24 --gateway=172.28.5.254 mybr0
+  321  docker network ls
+  322  docker network inspect mybr0               
+  323  docker run -d -P --name test03 --network mybr0  myapache-file:v3 
+  324  docker ps 
+  325  docker network inspect mybr0               
+  326  curl 172.28.5.0
+  327  docker run -d -P --name test04 --network mybr0  myapache-file:v3 
+  328  docker network inspect mybr0               
+  329  history 
+  330  docker volume ls 
+  331  docker ps -a 
+  332  docker container ls 
+  333  docker container ls -a
+  334  docker volume ls -a
+  335  docker volume ls 
+  336  docker volume create myvol
+  337  docker volume ls 
+  338  docker volume inspect myvol
+  339  docker run -it --name voltest --mount source=myvol,target=/myvoldir ubuntu:16.04
+  340  docker ps 
+  341  docker volume inspect myvol
+  342  cd /var/lib/docker/volumes/myvol/_data/
+  343  ls
+  344  cd SG/
+  345  ls
+  346  cat now 
+  347  ls
+  348  cd ..
+  349  ls
+  350  cd ..
+  351  docker ps -a
+  352  docker rm voltest
+  353  docker volume ls
+  354  docker run -it --name voltest01 --mount source=myvol,target=/app ubuntu:16.04
+  355  docker run -it --name voltest02 --mount source=myvol,target=/app ubuntu:16.04
+  356  ls
+  357  cd ..
+  358  ls
+  359  cd 
+  360  ls
+  361  docker kill $(docker ps -aq)
+  362  docker rm $(docker ps -aq)
+  363  docker run --name datacont -it -v /var/log -v /var/www -v /root/devops-sg-25092019/docker/apache:/var/www/html/ ubuntu:16.04 /bin/bash 
+  364  docker ps 
+  365  docker volume ls 
+  366  docker images 
+  367  docker run -d --volume-from datacont -P myapache-file:v3
+  368  docker run -d --volumes-from datacont -P myapache-file:v3
+  369  docker ps 
+  370  docker ps -a 
+  371  docker log ab94746ec9ae        
+  372  docker logs ab94746ec9ae        
+  373  docker run -d --volumes-from datacont ubuntu
+  374  ls
+  375  docker run -it --volumes-from datacont ubuntu
+  376  docker run --name datacont01 -it -v /root/devops-sg-25092019/docker/apache:/var/www/html/:ro ubuntu:16.04 /bin/bash 
+  377  docker run -d --volume-from datacont01 -P myapache-file:v3
+  378  docker run -d --volumes-from datacont01 -P myapache-file:v3
+  379  docker ps 
+  380  curl localhost:32781
+  381  ls
+  382  docker ps 
+  383  docker inspect bad36b0a9145        
+  384  curl 172.17.0.5
+  385  curl 172.17.0.5/info.html
+  386  docker run -d --volumes-from datacont01 -P myapache-file:v3
+  387  curl 172.17.0.5/info.html
+  388  curl 172.17.0.6/info.html
+  389  cd /root/devops-sg-25092019/docker/
+  390  ls
+  391  cd apache/
+  392  ls
+  393  vim info.html 
+  394  curl 172.17.0.6/info.html
+  395  curl 172.17.0.5/info.html
+  396  history 
+  397  ls
+  398  cd ..
+  399  ls
+  400  cd ..
+  401  ls
+  402  history > Day2_History.txt 

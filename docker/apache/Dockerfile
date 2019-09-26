@@ -13,5 +13,7 @@ RUN apt-get install apache2 -y
 # Copy the Code. 
 COPY info.html /var/www/html/
 
+EXPOSE 80 8080
+
 # Excute the Service 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]

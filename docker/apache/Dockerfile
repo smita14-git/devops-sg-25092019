@@ -10,5 +10,8 @@ RUN apt-get update
 #Install Apache Packages.
 RUN apt-get install apache2 -y 
 
+# Copy the Code. 
+COPY info.html /var/www/html/
+
 # Excute the Service 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
